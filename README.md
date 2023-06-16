@@ -1,26 +1,28 @@
-<div align="center">
+# asdf-awscli-local [![Build][build-img]][build] [![Lint][lint-img]][lint]
 
-# asdf-awscli-local [![Build](https://github.com/paulo-ferraz-oliveira/asdf-awscli-local/actions/workflows/build.yml/badge.svg)](https://github.com/paulo-ferraz-oliveira/asdf-awscli-local/actions/workflows/build.yml) [![Lint](https://github.com/paulo-ferraz-oliveira/asdf-awscli-local/actions/workflows/lint.yml/badge.svg)](https://github.com/paulo-ferraz-oliveira/asdf-awscli-local/actions/workflows/lint.yml)
+[build]: https://github.com/paulo-ferraz-oliveira/asdf-awscli-local/actions
+[build-img]: https://github.com/paulo-ferraz-oliveira/asdf-awscli-local/actions/workflows/build.yml/badge.svg
+[lint]: https://github.com/paulo-ferraz-oliveira/asdf-awscli-local/actions
+[lint-img]: https://github.com/paulo-ferraz-oliveira/asdf-awscli-local/actions/workflows/lint.yml/badge.svg
 
-[awscli-local](<TOOL HOMEPAGE>) plugin for the [asdf version manager](https://asdf-vm.com).
+[awscli-local](https://github.com/localstack/awscli-local#usage) plugin for the
+[asdf version manager](https://asdf-vm.com).
 
-</div>
+**Disclaimer**: the authors of this plugin are not affiliated with [LocalStack](https://localstack.cloud/).
 
-# Contents
+## Contents
 
 - [Dependencies](#dependencies)
 - [Install](#install)
 - [Contributing](#contributing)
 - [License](#license)
 
-# Dependencies
-
-**TODO: adapt this section**
+## Dependencies
 
 - `bash`, `curl`, `tar`: generic POSIX utilities.
-- `SOME_ENV_VAR`: set this environment variable in your shell config to load the correct version of tool x.
+- `pip3`: Python package management system.
 
-# Install
+## Install
 
 Plugin:
 
@@ -46,15 +48,27 @@ asdf global awscli-local latest
 awslocal --version
 ```
 
-Check [asdf](https://github.com/asdf-vm/asdf) readme for more instructions on how to
-install & manage versions.
+Check [asdf](https://github.com/asdf-vm/asdf)'s README for more instructions on how to
+install and manage versions.
 
-# Contributing
+## Versioning
 
-Contributions of any kind welcome! See the [contributing guide](contributing.md).
+This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
-[Thanks goes to these contributors](https://github.com/paulo-ferraz-oliveira/asdf-awscli-local/graphs/contributors)!
+## Readme
 
-# License
+We get inspiration for our README's format/content from
+[Make a README](https://www.makeareadme.com/).
 
-See [LICENSE](LICENSE) © [Paulo F. Oliveira](https://github.com/paulo-ferraz-oliveira/)
+## Changelog
+
+All notable changes to this project will be referenced from the [CHANGELOG](CHANGELOG.md).
+
+## Contributing
+
+Though this project is maintained by [paulo-ferraz-oliveira](https://github.com/paulo-ferraz-oliveira)
+contributions are accepted and welcome. Check [CONTRIBUTING.md](CONTRIBUTING.md) for more.
+
+## License
+
+Check [LICENSE.md](LICENSE.md).

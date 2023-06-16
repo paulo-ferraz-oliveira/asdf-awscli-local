@@ -1,8 +1,7 @@
-TODO: INSERT YOUR NAME  COPYRIGHT YEAR (if applicable to your license)
+# License
 
-MIT License
-
-Copyright (c) [year] [fullname]
+The MIT License (MIT)
+Copyright (c) 2023 Paulo Ferraz de Oliveira
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal

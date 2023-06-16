@@ -1,27 +1,35 @@
 ---
 name: Bug report
-about: Create a report to help us improve
-title: ""
-labels: bug
-assignees: ""
+about: Report a bug to improve this project
+title: ''
+labels: ''
+assignees: ''
+
 ---
 
-**Describe the bug**
+#### The bug
 
-<!-- A clear and concise description of what the bug is. -->
+A clear and concise description of what the bug is.
 
-**Steps to reproduce**
+#### Software versions
 
-<!-- Steps to reproduce the behavior: -->
+A list of software versions where the bug is apparent, as detailed as possible:
 
-**Expected behavior**
+* `asdf-awscli-local`: ...
+* other (where applicable): ...
 
-<!-- A clear and concise description of what you expected to happen. -->
+#### How to replicate
 
-**Screenshots**
+An ordered list of steps to replicate the bug:
 
-<!-- If applicable, add screenshots to help explain your problem. -->
+1. run `asdf plugin test ...`
+2. search for `...` in the error output
+3. look at file `...`
 
-**Additional context**
+#### Expected behaviour
 
-<!-- Add any other context about the problem here. -->
+What's expected to happen when you follow the steps listed above.
+
+#### Additional context
+
+Any other context about the bug.

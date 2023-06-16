@@ -1,14 +1,12 @@
+---
 name: Lint
 
-on:
-  push:
-    branches:
-      - main
-  pull_request:
+on: [push, pull_request]
 
 jobs:
   lint:
     runs-on: ubuntu-latest
+
     steps:
       - uses: actions/checkout@v3
       - uses: asdf-vm/actions/install@v2
@@ -16,9 +14,29 @@ jobs:
 
   actionlint:
     runs-on: ubuntu-latest
+
     steps:
       - uses: actions/checkout@v3
       - name: Check workflow files
         uses: docker://rhysd/actionlint:1.6.23
         with:
           args: -color
+
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      # uses .markdownlint.yml for configuration
+      - name: markdownlint
+        uses: DavidAnson/markdownlint-cli2-action@v11
+        with:
+          globs: |
+            .github/ISSUE_TEMPLATE/*.md
+            *.md
+
+      - name: yamllint
+        uses: ibiqlik/action-yamllint@v3
+        with:
+          file_or_dir: .github/workflows
+          strict: true
+          config_file: .yamllint.yml
