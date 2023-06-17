@@ -16,23 +16,23 @@ list_all_versions() {
 	v="${plugin_dir}/versions.txt"
 
 	set +e
-	pip3 install --user awscli-local== 2> "${v}"
+	pip3 install --user awscli-local== 2>"${v}"
 	set -e
 	sed -i 's/.*from versions: //g' "$v"
 	sed -i 's/)//g' "$v"
 	sed -i 's/,//g' "$v"
-	grep -v ERROR "$v" | cat | awk -F' ' '{ for (i = 1; i <= NF; i++) print $i }' > "$v.new"
+	grep -v ERROR "$v" | cat | awk -F' ' '{ for (i = 1; i <= NF; i++) print $i }' >"$v.new"
 	cat "$v.new"
 }
 
 download_release() {
-	local version filename url
+	local version filename
 	version="$1"
 	filename="$2"
 
 	echo "* Downloading $TOOL_NAME release $version..."
 	dest=$(dirname filename)
-	pip3 download --dest "$dest" "$filename" || fail "Could not download $url"
+	pip3 download --dest "$dest" "$filename" || fail "Could not download from pip"
 }
 
 install_version() {
