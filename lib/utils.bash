@@ -10,13 +10,19 @@ fail() {
 	exit 1
 }
 
-sort_versions() {
-	sed 'h; s/[+-]/./g; s/.p\([[:digit:]]\)/.z\1/; s/$/.z/; G; s/\n/ /' |
-		LC_ALL=C sort -t. -k 1,1 -k 2,2n -k 3,3n -k 4,4n -k 5,5n | awk '{print $2}'
-}
-
 list_all_versions() {
-	pip3 install awscli-local== 2>&1 | sed 's/.*from versions: //g' | sed 's/)//g' | grep -v ERROR
+	current_script_path=${BASH_SOURCE[0]}
+	plugin_dir=$(dirname "$(dirname "$current_script_path")")
+	v="${plugin_dir}/versions.txt"
+
+	set +e
+	pip3 install --user awscli-local== 2> "${v}"
+	set -e
+	sed -i 's/.*from versions: //g' "$v"
+	sed -i 's/)//g' "$v"
+	sed -i 's/,//g' "$v"
+	grep -v ERROR "$v" | cat | awk -F' ' '{ for (i = 1; i <= NF; i++) print $i }' > "$v.new"
+	cat "$v.new"
 }
 
 download_release() {
