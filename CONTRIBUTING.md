@@ -5,6 +5,7 @@
 1. [Requesting or implementing a feature](#requesting-or-implementing-a-feature)
 1. [Submitting your changes](#submitting-your-changes)
    1. [Script Style](#script-style)
+   1. [Pre- continuous integration](#pre--continuous-integration)
    1. [Committing your changes](#committing-your-changes)
    1. [Pull requests and branching](#pull-requests-and-branching)
    1. [Credits](#credits)
