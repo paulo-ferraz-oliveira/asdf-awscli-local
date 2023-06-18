@@ -25,28 +25,16 @@
 
 ## Install
 
-Plugin:
+Start by installing the plugin with:
 
 ```shell
-asdf plugin add awscli-local
-# or
 asdf plugin add awscli-local https://github.com/paulo-ferraz-oliveira/asdf-awscli-local.git
 ```
 
-awscli-local:
+Now install the tool with:
 
 ```shell
-# Show all installable versions
-asdf list-all awscli-local
-
-# Install specific version
 asdf install awscli-local latest
-
-# Set a version globally (on your ~/.tool-versions file)
-asdf global awscli-local latest
-
-# Now awscli-local commands are available
-awslocal --version
 ```
 
 Check [asdf](https://github.com/asdf-vm/asdf)'s README for more instructions on how to
