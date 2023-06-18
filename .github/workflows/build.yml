@@ -16,7 +16,21 @@ jobs:
     runs-on: ${{matrix.os}}
 
     steps:
-      - name: asdf_plugin_test
+      - uses: actions/checkout@v3
+
+      - name: parse-tool-versions
+        uses: paulo-ferraz-oliveira/parse-tool-versions@v1
+        id: tool-versions
+
+      - name: python
+        uses: actions/setup-python@v4
+        with:
+          python-version: ${{steps.tool-versions.outputs.python}}
+
+      - name: wheel
+        run: pip3 install wheel
+
+      - name: plugin-test
         uses: asdf-vm/actions/plugin-test@v2
         with:
           command: awslocal --version
