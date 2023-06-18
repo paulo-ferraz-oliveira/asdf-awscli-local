@@ -21,6 +21,7 @@
 
 - `bash`, `curl`, `tar`: generic POSIX utilities.
 - `pip3`: Python package management system.
+- `wheel`: A built-package format for Python.
 
 ## Install
 
