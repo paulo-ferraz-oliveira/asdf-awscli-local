@@ -39,6 +39,7 @@ jobs:
         with:
           globs: |
             .github/ISSUE_TEMPLATE/*.md
+            .github/*.md
             *.md
             LICENSE
 
