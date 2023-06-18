@@ -7,7 +7,7 @@ BASE_TOOL="awslocal"
 TOOL_TEST="$BASE_TOOL --version"
 
 fail() {
-	printf "asdf-$TOOL_NAME: $*\n"
+	printf "asdf-%s: $*\n" "$TOOL_NAME"
 	exit 1
 }
 
@@ -32,7 +32,7 @@ download_release() {
 	dirname=$(dirname "$2")
 	filename=$(basename "$2")
 
-	printf "* Downloading $TOOL_NAME release $version...\n"
+	printf "* Downloading %s release %s...\n" "$TOOL_NAME" "$version"
 	pip3 download --dest "$dirname" "$filename==$version" || fail "Could not download from pip"
 }
 
@@ -50,7 +50,7 @@ install_version() {
 		cp -r "$ASDF_DOWNLOAD_PATH"/* "$install_path"
 
 		local tool_cmd
-		tool_cmd="$(printf "$TOOL_TEST\n" | cut -d' ' -f1)"
+		tool_cmd="$(printf "%s\n" "$TOOL_TEST" | cut -d' ' -f1)"
 		chmod +x "$install_path/bin/$BASE_TOOL"
 
 		install_localstack "$install_path"
@@ -58,7 +58,7 @@ install_version() {
 
 		[ -x "$install_path/bin/$tool_cmd" ] || fail "Expected $install_path/$tool_cmd to be executable."
 
-		printf "$TOOL_NAME $version installation was successful!\n"
+		printf "%s %s installation was successful!\n" "$TOOL_NAME" "$version"
 	) || (
 		rm -rf "$install_path"
 		fail "An error occurred while installing $TOOL_NAME $version."
