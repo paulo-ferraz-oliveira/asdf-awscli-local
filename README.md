@@ -14,6 +14,9 @@
 
 - [Dependencies](#dependencies)
 - [Install](#install)
+- [Versioning](#versioning)
+- [Readme](#readme)
+- [Changelog](#changelog)
 - [Contributing](#contributing)
 - [License](#license)
 
