@@ -8,4 +8,5 @@ plugin_dir=$(dirname "$(dirname "$current_script_path")")
 # shellcheck source=lib/utils.bash
 source "$plugin_dir/lib/utils.bash"
 
+# TODO: I think echo is a forbidden command, but I can't make this work with printf either
 list_all_versions | xargs echo
