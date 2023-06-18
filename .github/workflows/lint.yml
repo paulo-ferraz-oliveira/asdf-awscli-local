@@ -35,6 +35,7 @@ jobs:
           globs: |
             .github/ISSUE_TEMPLATE/*.md
             *.md
+            LICENSE
 
       - name: yamllint
         uses: ibiqlik/action-yamllint@v3

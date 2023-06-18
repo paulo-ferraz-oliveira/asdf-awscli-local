@@ -71,4 +71,4 @@ contributions are accepted and welcome. Check [CONTRIBUTING.md](CONTRIBUTING.md)
 
 ## License
 
-Check [LICENSE.md](LICENSE.md).
+Check [LICENSE](LICENSE).

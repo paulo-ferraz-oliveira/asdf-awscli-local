@@ -11,7 +11,7 @@
 
 ## License
 
-`asdf-awscli-local` is licensed under The [MIT](LICENSE.md) License, for all code.
+`asdf-awscli-local` is licensed under The [MIT](LICENSE) License, for all code.
 
 ## Reporting a bug
 
