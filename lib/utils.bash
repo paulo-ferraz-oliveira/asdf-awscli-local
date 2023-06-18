@@ -92,9 +92,9 @@ unpack_dep() {
 	dep="$2"
 	dep_name="$3"
 
-  dep_whl=$(find "$install_path" -name "$dep-*")
-  wheel3 unpack "$dep_whl" --dest "$install_path"
+	dep_whl=$(find "$install_path" -name "$dep-*")
+	wheel unpack "$dep_whl" --dest "$install_path"
 
-  dep=$(find "$install_path" -depth 2 -name "$dep_name")
-  mv "$dep" "$install_path/bin"
+	dep=$(find "$install_path" -maxdepth 2 -name "$dep_name")
+	mv "$dep" "$install_path/bin"
 }
