@@ -19,10 +19,10 @@ list_all_versions() {
 	set +e
 	pip3 install --user awscli-local== 2>"$v"
 	set -e
-	sed -i 's/.*from versions: //g' "$v"
-	sed -i 's/)//g' "$v"
-	sed -i 's/,//g' "$v"
-	grep -v ERROR "$v" > "$v.new"
+	sed -i'.bak' -e 's/.*from versions: //g' "$v"
+	sed -i'.bak' -e 's/)//g' "$v"
+	sed -i'.bak' -e 's/,//g' "$v"
+	grep -v ERROR "$v" >"$v.new"
 	cat "$v.new"
 }
 
