@@ -65,7 +65,7 @@ Also, for testing locally use:
 
 <!-- markdownlint-disable MD013 -->
 ```shell
-asdf plugin test awscli-local https://github.com/paulo-ferraz-oliveira/asdf-awscli-local.git "awslocal --version"
+asdf plugin test awscli-local https://github.com/paulo-ferraz-oliveira/asdf-awscli-local.git "awslocal --version" --asdf-plugin-gitref main
 ```
 <!-- markdownlint-enable -->
 
