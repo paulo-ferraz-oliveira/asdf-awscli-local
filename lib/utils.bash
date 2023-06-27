@@ -12,6 +12,7 @@ fail() {
 }
 
 list_all_versions() {
+	local current_script_path plugin_dir v
 	current_script_path=${BASH_SOURCE[0]}
 	plugin_dir=$(dirname "$(dirname "$current_script_path")")
 	v="$plugin_dir/versions.txt"
@@ -27,22 +28,40 @@ list_all_versions() {
 }
 
 download_release() {
-	local version filename
-	version="$1"
+	local version dirname filename
+	version=$1
 	dirname=$(dirname "$2")
 	filename=$(basename "$2")
 
 	printf "* Downloading %s release %s...\n" "$TOOL_NAME" "$version"
-	pip3 download --dest "$dirname" "$filename==$version" || fail "Could not download from pip"
+	ensure_pip3
+	pip3 download --dest "$dirname" "$filename==$version" || fail "could not download from pip"
+}
+
+ensure() {
+	local check=$1
+	local msg=$2
+
+	if ! eval "$check" >/dev/null; then
+		fail "$msg (${check} == $?)"
+	fi
+}
+
+ensure_pip3() {
+	ensure "which pip3" "it appears pip is not available"
+}
+
+ensure_wheel() {
+	ensure "pip show wheel" "it appears wheel is not available"
 }
 
 install_version() {
-	local install_type="$1"
-	local version="$2"
-	local install_path="$3"
+	local install_type=$1
+	local version=$2
+	local install_path=$3
 
 	if [ "$install_type" != "version" ]; then
-		fail "asdf-$TOOL_NAME supports release installs only"
+		fail "supports release installs only"
 	fi
 
 	(
@@ -56,17 +75,17 @@ install_version() {
 		install_localstack "$install_path"
 		unpack_deps "$install_path"
 
-		[ -x "$install_path/bin/$tool_cmd" ] || fail "Expected $install_path/$tool_cmd to be executable."
+		[ -x "$install_path/bin/$tool_cmd" ] || fail "expected $install_path/$tool_cmd to be executable."
 
 		printf "%s %s installation was successful!\n" "$TOOL_NAME" "$version"
 	) || (
 		rm -rf "$install_path"
-		fail "An error occurred while installing $TOOL_NAME $version."
+		fail "an error occurred while installing $TOOL_NAME $version."
 	)
 }
 
 install_localstack() {
-	install_path="$1"
+	local install_path=$1
 
 	localstack_client_tar_gz=$(find "$install_path" -name "localstack-client*")
 	tar zxf "$localstack_client_tar_gz" --strip-components=1 -C "$install_path"
@@ -76,8 +95,9 @@ install_localstack() {
 }
 
 unpack_deps() {
-	install_path="$1"
+	local install_path=$1
 
+	ensure_wheel
 	unpack_dep "$install_path" boto3 boto3
 	unpack_dep "$install_path" botocore botocore
 	unpack_dep "$install_path" jmespath jmespath
@@ -88,9 +108,9 @@ unpack_deps() {
 }
 
 unpack_dep() {
-	install_path="$1"
-	dep="$2"
-	dep_name="$3"
+	local install_path=$1
+	local dep=$2
+	local dep_name=$3
 
 	dep_whl=$(find "$install_path" -name "$dep-*")
 	wheel unpack "$dep_whl" --dest "$install_path"
