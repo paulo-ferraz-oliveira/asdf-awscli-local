@@ -8,7 +8,9 @@
 [awscli-local](https://github.com/localstack/awscli-local#usage) plugin for the
 [asdf version manager](https://asdf-vm.com).
 
-**Disclaimer**: the authors of this plugin are not affiliated with [LocalStack](https://localstack.cloud/).
+**Disclaimer**: the authors of this plugin are not affiliated with [LocalStack](https://localstack.cloud/),
+and for information purposes we show below the license associated with that software:
+![localstack license](https://img.shields.io/pypi/l/localstack.svg).
 
 ## Contents
 
