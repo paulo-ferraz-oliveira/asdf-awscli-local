@@ -41,10 +41,11 @@ download_release() {
 ensure() {
 	local check=$1
 	local msg=$2
+	local res
 
-	if ! eval "$check" >/dev/null; then
-		fail "$msg (${check} == $?)"
-	fi
+	eval "$check" >/dev/null
+	res=$?
+	[ "$res" == "0" ] || fail "$msg (${check} == $res)"
 }
 
 ensure_pip3() {
