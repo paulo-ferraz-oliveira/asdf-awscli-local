@@ -12,6 +12,7 @@ fail() {
 }
 
 list_all_versions() {
+	local current_script_path plugin_dir v
 	current_script_path=${BASH_SOURCE[0]}
 	plugin_dir=$(dirname "$(dirname "$current_script_path")")
 	v="$plugin_dir/versions.txt"
@@ -27,8 +28,8 @@ list_all_versions() {
 }
 
 download_release() {
-	local version filename
-	version="$1"
+	local version dirname filename
+	version=$1
 	dirname=$(dirname "$2")
 	filename=$(basename "$2")
 
@@ -37,9 +38,9 @@ download_release() {
 }
 
 install_version() {
-	local install_type="$1"
-	local version="$2"
-	local install_path="$3"
+	local install_type=$1
+	local version=$2
+	local install_path=$3
 
 	if [ "$install_type" != "version" ]; then
 		fail "supports release installs only"
@@ -66,7 +67,7 @@ install_version() {
 }
 
 install_localstack() {
-	install_path="$1"
+	local install_path=$1
 
 	localstack_client_tar_gz=$(find "$install_path" -name "localstack-client*")
 	tar zxf "$localstack_client_tar_gz" --strip-components=1 -C "$install_path"
@@ -76,7 +77,7 @@ install_localstack() {
 }
 
 unpack_deps() {
-	install_path="$1"
+	local install_path=$1
 
 	unpack_dep "$install_path" boto3 boto3
 	unpack_dep "$install_path" botocore botocore
@@ -88,9 +89,9 @@ unpack_deps() {
 }
 
 unpack_dep() {
-	install_path="$1"
-	dep="$2"
-	dep_name="$3"
+	local install_path=$1
+	local dep=$2
+	local dep_name=$3
 
 	dep_whl=$(find "$install_path" -name "$dep-*")
 	wheel unpack "$dep_whl" --dest "$install_path"
