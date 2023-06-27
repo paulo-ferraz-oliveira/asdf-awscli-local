@@ -34,7 +34,25 @@ download_release() {
 	filename=$(basename "$2")
 
 	printf "* Downloading %s release %s...\n" "$TOOL_NAME" "$version"
+	ensure_pip3
 	pip3 download --dest "$dirname" "$filename==$version" || fail "could not download from pip"
+}
+
+ensure() {
+	local check=$1
+	local msg=$2
+
+	if ! eval "$check" >/dev/null; then
+		fail "$msg (${check} == $?)"
+	fi
+}
+
+ensure_pip3() {
+	ensure "which pip3" "it appears pip is not available"
+}
+
+ensure_wheel() {
+	ensure "pip show wheel" "it appears wheel is not available"
 }
 
 install_version() {
@@ -79,6 +97,7 @@ install_localstack() {
 unpack_deps() {
 	local install_path=$1
 
+	ensure_wheel
 	unpack_dep "$install_path" boto3 boto3
 	unpack_dep "$install_path" botocore botocore
 	unpack_dep "$install_path" jmespath jmespath
