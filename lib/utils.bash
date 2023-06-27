@@ -33,7 +33,7 @@ download_release() {
 	filename=$(basename "$2")
 
 	printf "* Downloading %s release %s...\n" "$TOOL_NAME" "$version"
-	pip3 download --dest "$dirname" "$filename==$version" || fail "Could not download from pip"
+	pip3 download --dest "$dirname" "$filename==$version" || fail "could not download from pip"
 }
 
 install_version() {
@@ -42,7 +42,7 @@ install_version() {
 	local install_path="$3"
 
 	if [ "$install_type" != "version" ]; then
-		fail "asdf-$TOOL_NAME supports release installs only"
+		fail "supports release installs only"
 	fi
 
 	(
@@ -56,12 +56,12 @@ install_version() {
 		install_localstack "$install_path"
 		unpack_deps "$install_path"
 
-		[ -x "$install_path/bin/$tool_cmd" ] || fail "Expected $install_path/$tool_cmd to be executable."
+		[ -x "$install_path/bin/$tool_cmd" ] || fail "expected $install_path/$tool_cmd to be executable."
 
 		printf "%s %s installation was successful!\n" "$TOOL_NAME" "$version"
 	) || (
 		rm -rf "$install_path"
-		fail "An error occurred while installing $TOOL_NAME $version."
+		fail "an error occurred while installing $TOOL_NAME $version."
 	)
 }
 
