@@ -8,7 +8,12 @@
 [awscli-local](https://github.com/localstack/awscli-local#usage) plugin for the
 [asdf version manager](https://asdf-vm.com).
 
-**Disclaimer**: the authors of this plugin are not affiliated with [LocalStack](https://localstack.cloud/).
+**Disclaimer**: the authors of this plugin are not affiliated with [LocalStack](https://localstack.cloud/);
+for information purposes we show the license associated with that software:
+[![LocalStack License][localstack-license-img]][localstack-license].
+
+[localstack-license]: https://github.com/localstack/localstack/blob/master/LICENSE.txt
+[localstack-license-img]: https://img.shields.io/pypi/l/localstack.svg?label=LocalStack%20License
 
 ## Contents
 
@@ -24,7 +29,7 @@
 
 - `bash`, `curl`, `tar`: generic POSIX utilities.
 - `pip3`: Python package management system.
-- `wheel`: A built-package format for Python.
+- `wheel`: a built-package format for Python.
 
 ## Install
 

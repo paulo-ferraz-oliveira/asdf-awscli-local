@@ -38,14 +38,15 @@ jobs:
         uses: DavidAnson/markdownlint-cli2-action@v11
         with:
           globs: |
-            .github/ISSUE_TEMPLATE/*.md
-            .github/*.md
+            .github/**/*.md
             *.md
             LICENSE
 
       - name: yamllint
         uses: ibiqlik/action-yamllint@v3
         with:
-          file_or_dir: .github/workflows
+          file_or_dir: |
+            .github/workflows/**.yml
+            .*.yml
           strict: true
           config_file: .yamllint.yml
