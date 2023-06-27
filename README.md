@@ -26,7 +26,7 @@ and for information purposes we show below the license associated with that soft
 
 - `bash`, `curl`, `tar`: generic POSIX utilities.
 - `pip3`: Python package management system.
-- `wheel`: A built-package format for Python.
+- `wheel`: a built-package format for Python.
 
 ## Install
 
