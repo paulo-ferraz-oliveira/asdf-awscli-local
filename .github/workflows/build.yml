@@ -1,7 +1,7 @@
 ---
 name: Build
 
-on: [push, pull_request]
+on: [push]
 
 jobs:
   plugin_test:
@@ -31,6 +31,7 @@ jobs:
         run: pip3 install wheel
 
       - name: plugin-test
-        uses: asdf-vm/actions/plugin-test@v2
+        uses: asdf-vm/actions/plugin-test@v3
         with:
           command: awslocal --version
+          version: 0.21
