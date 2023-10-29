@@ -31,6 +31,6 @@ jobs:
         run: pip3 install wheel
 
       - name: plugin-test
-        uses: asdf-vm/actions/plugin-test@v2
+        uses: asdf-vm/actions/plugin-test@v3
         with:
           command: awslocal --version
