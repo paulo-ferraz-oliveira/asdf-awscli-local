@@ -34,3 +34,4 @@ jobs:
         uses: asdf-vm/actions/plugin-test@v3
         with:
           command: awslocal --version
+          version: 0.21
