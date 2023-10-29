@@ -53,7 +53,7 @@ ensure_pip3() {
 }
 
 ensure_wheel() {
-	ensure "pip show wheel" "it appears wheel is not available"
+	ensure "pip3 show wheel" "it appears wheel is not available"
 }
 
 install_version() {
