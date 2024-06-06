@@ -1,0 +1,15 @@
+{
+  "$schema": "https://docs.renovatebot.com/renovate-schema.json",
+  "extends": [
+    "config:best-practices"
+  ],
+  "packageRules": [
+    {
+      "matchFilesNames": [
+        ".github/**/*.yml",
+        ".tool-versions"
+      ],
+      "groupName": "dev tools"
+    }
+  ]
+}
