@@ -10,7 +10,9 @@ jobs:
     strategy:
       matrix:
         os:
-          - ubuntu-22.04
+          # renovate datasource: github-runners, depName: ubuntu
+          - ubuntu-20.04
+          # renovate datasource: github-runners, depName: macos
           - macos-12
 
     runs-on: ${{matrix.os}}
@@ -34,4 +36,5 @@ jobs:
         uses: asdf-vm/actions/plugin-test@05e0d2ed97b598bfce82fd30daf324ae0c4570e6 # v3.0.2
         with:
           command: awslocal --version
+          # renovate datasource: pypi, depName: awscli-local
           version: 0.21
