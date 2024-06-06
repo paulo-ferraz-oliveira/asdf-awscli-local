@@ -2,5 +2,6 @@
 extends: default
 rules:
   line-length:
-    max: 100
-  truthy: disable
+    max: 117
+  comments:
+    min-spaces-from-content: 1
