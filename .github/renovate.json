@@ -11,5 +11,17 @@
       ],
       "groupName": "dev tools"
     }
+  ],
+  "customManagers": [
+    {
+      "description": "Match versions (per datasource and depName) in .github/**/*.yml",
+      "customType": "regex",
+      "fileMatch": [
+        ".github/.*/.*\\.yml"
+      ],
+      "matchStrings": [
+        "# renovate datasource: (?<datasource>[^,]+), depName: (?<depName>[^\\n]+)\\n[^\\d]+(?<currentValue>v?\\d+(\\.\\d+)?(\\.\\d+)?)"
+      ]
+    }
   ]
 }

@@ -10,7 +10,9 @@ jobs:
     strategy:
       matrix:
         os:
-          - ubuntu-22.04
+          # renovate datasource: github-runners, depName: ubuntu
+          - ubuntu-20.04
+          # renovate datasource: github-runners, depName: macos
           - macos-12
 
     runs-on: ${{matrix.os}}
@@ -19,7 +21,7 @@ jobs:
       - uses: actions/checkout@a5ac7e51b41094c92402da3b24376905380afc29 # v4.1.6
 
       - name: parse-tool-versions
-        uses: paulo-ferraz-oliveira/parse-tool-versions@534819f70c0c04d788b49dafc29c8117901277bd # v1
+        uses: paulo-ferraz-oliveira/parse-tool-versions@534819f70c0c04d788b49dafc29c8117901277bd # v1.0.3
         id: tool-versions
 
       - name: python
@@ -34,4 +36,5 @@ jobs:
         uses: asdf-vm/actions/plugin-test@05e0d2ed97b598bfce82fd30daf324ae0c4570e6 # v3.0.2
         with:
           command: awslocal --version
+          # renovate datasource: pypi, depName: awscli-local
           version: 0.21
