@@ -5,37 +5,37 @@ on: [push]
 
 jobs:
   lint:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-22.04
 
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4.1.6
 
       - name: install
-        uses: asdf-vm/actions/install@v2
+        uses: asdf-vm/actions/install@v3.0.2
 
       - name: lint.bash
         run: scripts/lint.bash
 
   actionlint:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-22.04
 
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4.1.6
 
       - name: Check workflow files
-        uses: docker://rhysd/actionlint:1.6.23
+        uses: docker://rhysd/actionlint:1.7.1
         with:
           args: -color
 
   build:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-22.04
 
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4.1.6
 
       # uses .markdownlint.yml for configuration
       - name: markdownlint
-        uses: DavidAnson/markdownlint-cli2-action@v11
+        uses: DavidAnson/markdownlint-cli2-action@v16.0.0
         with:
           globs: |
             .github/**/*.md
@@ -43,7 +43,7 @@ jobs:
             LICENSE
 
       - name: yamllint
-        uses: ibiqlik/action-yamllint@v3
+        uses: ibiqlik/action-yamllint@v3.1.1
         with:
           file_or_dir: |
             .github/workflows/**.yml

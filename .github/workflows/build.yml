@@ -10,20 +10,20 @@ jobs:
     strategy:
       matrix:
         os:
-          - ubuntu-latest
-          - macos-latest
+          - ubuntu-22.04
+          - macos-12
 
     runs-on: ${{matrix.os}}
 
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4.1.6
 
       - name: parse-tool-versions
         uses: paulo-ferraz-oliveira/parse-tool-versions@v1
         id: tool-versions
 
       - name: python
-        uses: actions/setup-python@v4
+        uses: actions/setup-python@v5.1.0
         with:
           python-version: ${{steps.tool-versions.outputs.python}}
 
@@ -31,7 +31,7 @@ jobs:
         run: pip3 install wheel
 
       - name: plugin-test
-        uses: asdf-vm/actions/plugin-test@v3
+        uses: asdf-vm/actions/plugin-test@v3.0.2
         with:
           command: awslocal --version
           version: 0.21
