@@ -68,7 +68,7 @@ Also, for testing locally use:
 ```shell
 # Replace <user> with your GitHub user name
 # Replace <branch> with the branch you pushed
-asdf plugin test awscli-local https://github.com/<user>/asdf-awscli-local.git "awslocal --version" --asdf-plugin-gitref <branch>
+asdf plugin test awscli-local git@github.com:<user>/asdf-awscli-local.git "awslocal --version" --asdf-plugin-gitref <branch>
 ```
 <!-- markdownlint-enable -->
 

@@ -18,12 +18,13 @@ list_all_versions() {
 	v="$plugin_dir/versions.txt"
 
 	set +e
-	pip3 install --user awscli-local== 2>"$v"
+	pip3 index versions awscli-local >"$v" 2>/dev/null
 	set -e
-	sed -i'.bak' -e 's/.*from versions: //g' "$v"
-	sed -i'.bak' -e 's/)//g' "$v"
+	sed -i'.bak' -e 's/Available versions: //g' "$v"
+	sed -i'.bak' -e 's/.*)//g' "$v"
 	sed -i'.bak' -e 's/,//g' "$v"
-	grep -v ERROR "$v" >"$v.new"
+	tr -d '\n' <"$v" >"$v.new"
+	rm -f "$v.bak" || true
 	cat "$v.new"
 }
 
@@ -88,7 +89,7 @@ install_version() {
 install_localstack() {
 	local install_path=$1
 
-	localstack_client_tar_gz=$(find "$install_path" -name "localstack-client*")
+	localstack_client_tar_gz=$(find "$install_path" -name "localstack_client*")
 	tar zxf "$localstack_client_tar_gz" --strip-components=1 -C "$install_path"
 
 	localstack_client=$(find "$install_path" -name "localstack_client")
