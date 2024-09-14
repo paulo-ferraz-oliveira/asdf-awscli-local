@@ -18,12 +18,13 @@ list_all_versions() {
 	v="$plugin_dir/versions.txt"
 
 	set +e
-	pip3 install --user awscli-local== 2>"$v"
+	pip3 index versions awscli-local >"$v" 2>/dev/null
 	set -e
-	sed -i'.bak' -e 's/.*from versions: //g' "$v"
-	sed -i'.bak' -e 's/)//g' "$v"
+	sed -i'.bak' -e 's/Available versions: //g' "$v"
+	sed -i'.bak' -e 's/.*)//g' "$v"
 	sed -i'.bak' -e 's/,//g' "$v"
-	grep -v ERROR "$v" >"$v.new"
+	tr -d '\n' < "$v" > "$v.new"
+	rm -f "$v.bak" || true
 	cat "$v.new"
 }
 
