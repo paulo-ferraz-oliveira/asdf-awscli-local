@@ -89,7 +89,7 @@ install_version() {
 install_localstack() {
 	local install_path=$1
 
-	localstack_client_tar_gz=$(find "$install_path" -name "localstack-client*")
+	localstack_client_tar_gz=$(find "$install_path" -name "localstack_client*")
 	tar zxf "$localstack_client_tar_gz" --strip-components=1 -C "$install_path"
 
 	localstack_client=$(find "$install_path" -name "localstack_client")
