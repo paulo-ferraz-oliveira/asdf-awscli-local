@@ -23,7 +23,7 @@ list_all_versions() {
 	sed -i'.bak' -e 's/Available versions: //g' "$v"
 	sed -i'.bak' -e 's/.*)//g' "$v"
 	sed -i'.bak' -e 's/,//g' "$v"
-	tr -d '\n' < "$v" > "$v.new"
+	tr -d '\n' <"$v" >"$v.new"
 	rm -f "$v.bak" || true
 	cat "$v.new"
 }
