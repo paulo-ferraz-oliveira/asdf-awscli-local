@@ -18,7 +18,7 @@ jobs:
       matrix:
         os:
           # renovate datasource: github-runners, depName: ubuntu
-          - ubuntu-22.04
+          - ubuntu-24.04
           # renovate datasource: github-runners, depName: macos
           - macos-14
 
