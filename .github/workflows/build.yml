@@ -49,7 +49,7 @@ jobs:
 
       # same as above, but works around an asdf-vm/actions/plugin-test issue where the ref is Nok
       - name: plugin-test
-        uses: asdf-vm/actions/plugin-test@v3.0.2
+        uses: asdf-vm/actions/plugin-test@1902764435ca0dd2f3388eea723a4f92a4eb8302 # v4.0.0
         if: failure()
         with:
           command: awslocal --version
