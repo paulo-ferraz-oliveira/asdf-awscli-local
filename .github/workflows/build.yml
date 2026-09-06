@@ -25,7 +25,7 @@ jobs:
     runs-on: ${{matrix.os}}
 
     steps:
-      - uses: actions/checkout@9c091bb21b7c1c1d1991bb908d89e4e9dddfe3e0 # v7.0.0
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
 
       - name: parse-tool-versions
         uses: paulo-ferraz-oliveira/parse-tool-versions@62d3a3f201712424ce3ed6723eeb97da195dc1a6 # v1.1.0
